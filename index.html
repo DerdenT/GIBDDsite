@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование ГИБДД - Подготовка к экзамену</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add this to your style.css or in a style tag in the head */
+        .registration-anchor {
+            display: block;
+            position: relative;
+            top: -50px; /* Adjust this value based on your header height */
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Accessibility Toolbar -->
+    <div class="accessibility-toolbar">
+        <button id="theme-toggle" aria-label="Переключить тему">
+            <i class="fas fa-moon"></i>
+            Темная тема
+        </button>
+        <button id="accessibility-toggle" aria-label="Включить режим для слабовидящих">
+            <i class="fas fa-eye"></i>
+            Режим для слабовидящих
+        </button>
+    </div>
+    <!-- Header Section -->
+    <header>
+    <div class="header-content">
+        <div class="logo">
+            <i class="fas fa-car"></i>
+            <h1>Экзамен ГИБДД</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-button active" data-page="home">Главная</a></li>
+                <li><a href="#register-section" class="nav-button" id="register-nav-btn">Регистрация</a></li>
+                <li id="logout-nav-item" style="display: none;"><a href="#" class="nav-button" id="logout-nav-btn">Выйти</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+ <!-- Registration Section -->
+        <section id="register" class="page">
+        <a class="registration-anchor" id="register-section"></a>
+        <h2 class="page-title">Регистрация / Вход</h2>
+        <div class="registration-container">
+            <div class="registration-form-container">
+                <h3>Регистрация</h3>
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                </form>
+            </div>
+
+            <div class="login-form-container">
+                <h3>Вход</h3>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email:</label>
+                        <input type="email" id="login-email" name="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Пароль:</label>
+                        <input type="password" id="login-password" name="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Войти</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section -->
+   <section id="home" class="page active">
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Подготовка к экзамену в ГИБДД</h2>
+            <p>Пройдите онлайн-тестирование по правилам дорожного движения и проверьте свои знания перед сдачей
+                официального экзамена.</p>
+            <p>Наш сервис предоставляет актуальные вопросы, удобный интерфейс и подробную статистику для успешной
+                подготовки к теоретическому экзамену в ГИБДД.</p>
+            <a href="#" class="btn btn-primary start-test">Начать тестирование</a>
+        </div>
+    </div>
+    <!-- ... rest of the home section content ... -->
+</section>
+
+        <!-- Image Carousel Section -->
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="carousel-slide" data-index="0">
+                    <img src="slide1.jpg" alt="Slide 1">
+                    <span class="zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="carousel-slide" data-index="1">
+                    <img src="slide2.jpg" alt="Slide 2">
+                    <span class="zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+                <div class="carousel-slide" data-index="2">
+                    <img src="slide3.jpg" alt="Slide 3">
+                    <span class="zoom-icon"><i class="fas fa-search-plus"></i></span>
+                </div>
+            </div>
+            <div class="carousel-text">
+                <h3 id="carousel-title">Актуальные вопросы</h3>
+                <p id="carousel-description">Наши тесты содержат самые актуальные вопросы, которые могут встретиться на
+                    экзамене в ГИБДД.</p>
+                <div class="carousel-controls">
+                    <div class="carousel-control prev"><i class="fas fa-chevron-left"></i></div>
+                    <div class="carousel-control next"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal for Image Zoom -->
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <div class="modal-content">
+                <img id="modalImage" src="" alt="Full Image">
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="feature-card">
+                <i class="fas fa-book"></i>
+                <h3>Актуальные билеты</h3>
+                <p>Тесты соответствуют официальным экзаменационным билетам ГИБДД 2025 года. Мы постоянно обновляем базу
+                    вопросов, чтобы вы были готовы к любым изменениям в экзамене.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-clock"></i>
+                <h3>Режим экзамена</h3>
+                <p>Проверьте свои знания в условиях, максимально приближенных к реальному экзамену. Ограниченное время,
+                    случайный порядок вопросов – все как на настоящем экзамене.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Статистика результатов</h3>
+                <p>Отслеживайте свой прогресс и улучшайте знания в слабых темах. Подробный анализ ваших ответов поможет вам
+                    сосредоточиться на наиболее важных областях.</p>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-container">
+            <h3>Ближайшее отделение ГИБДД</h3>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.898642045627!2d37.6155614!3d55.7599986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5024a6b8d9%3A0x3d60045c02f7e99d!2z0KHQstC-0LTQuNGC0YPQuiDQmtC40YjQutC-0LIsINCj0LrRgNCw0YLQu9C10L3QuNGP!5e0!3m2!1sru!2s!4v1696850624920!5m2!1sru!2s"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+
+    </section>
+
+
+    <!-- Account Information Display -->
+    <section id="account-info" style="display: none;">
+        <h2>Ваш аккаунт</h2>
+        <p>Имя: <span id="account-name"></span></p>
+        <p>Email: <span id="account-email"></span></p>
+        <button id="logout-btn" class="btn btn-primary">Выйти</button>
+    </section>
+	
+    <!-- Testimonials Section -->
+    <div class="ticker-container">
+        <div class="ticker-track">
+            <div class="ticker-slide">
+                <img src="2.jpg" alt="Аватар Ивана" class="testimonial-avatar">
+                "Отличный сайт, помог подготовиться к экзамену на 100%!" - Иван
+            </div>
+            <div class="ticker-slide">
+                <img src="2.jpg" alt="Аватар Марии" class="testimonial-avatar">
+                "Очень удобный интерфейс, все понятно и доступно." - Мария
+            </div>
+            <div class="ticker-slide">
+                <img src="2.jpg" alt="Аватар Петра" class="testimonial-avatar">
+                "Рекомендую всем, кто готовится к экзамену в ГИБДД!" - Петр
+            </div>
+            <div class="ticker-slide">
+                <img src="2.jpg" alt="Аватар Елены" class="testimonial-avatar">
+                "Актуальные вопросы и подробная статистика, спасибо!" - Елена
+            </div>
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Система подготовки к экзамену ГИБДД. Все права защищены.</p>
+            <div class="social-links">
+                <a href="https://t.me/f1ver1" target="_blank" aria-label="Telegram"><i
+                    class="fab fa-telegram"></i></a>
+                <a href="https://vk.com/drill1488" target="_blank" aria-label="VK"><i
+                    class="fab fa-vk"></i></a>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

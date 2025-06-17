@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест ПДД</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="test-container">
+    <h2>Тест на знание ПДД</h2>
+
+    <div data-question-number="1" class="question-item">
+        <div class="question-text">
+            1. Что означает этот дорожный знак? (Знак "Уступи дорогу")
+        </div>
+        <div class="options-container">
+            <label><input type="radio" name="answer1" value="1"> Преимущество на перекрестке.</label>
+            <label><input type="radio" name="answer1" value="2"> Обязанность уступить дорогу.</label>
+            <label><input type="radio" name="answer1" value="3"> Движение без остановки запрещено.</label>
+            <label><input type="radio" name="answer1" value="4"> Конец зоны всех ограничений.</label>
+        </div>
+    </div>
+
+    <div data-question-number="2" class="question-item" style="display: none;">
+        <div class="question-text">
+            2. Какое действие водитель обязан выполнить перед началом движения?
+        </div>
+        <div class="options-container">
+            <label><input type="radio" name="answer2" value="1"> Включить аварийную сигнализацию.</label>
+            <label><input type="radio" name="answer2" value="2"> Убедиться в безопасности движения.</label>
+            <label><input type="radio" name="answer2" value="3"> Подать звуковой сигнал.</label>
+            <label><input type="radio" name="answer2" value="4"> Проверить уровень топлива.</label>
+        </div>
+    </div>
+
+    <div data-question-number="3" class="question-item" style="display: none;">
+        <div class="question-text">
+            3. Что означает жёлтый мигающий сигнал светофора?
+        </div>
+        <div class="options-container">
+            <label><input type="radio" name="answer3" value="1"> Движение запрещено.</label>
+            <label><input type="radio" name="answer3" value="2"> Движение разрешено с особой осторожностью.</label>
+            <label><input type="radio" name="answer3" value="3"> Светофор не работает.</label>
+            <label><input type="radio" name="answer3" value="4"> Приближение к пешеходному переходу.</label>
+        </div>
+    </div>
+
+    <div data-question-number="4" class="question-item" style="display: none;">
+        <div class="question-text">
+            4. Разрешено ли обгонять на пешеходном переходе?
+        </div>
+        <div class="options-container">
+            <label><input type="radio" name="answer4" value="1"> Разрешено.</label>
+            <label><input type="radio" name="answer4" value="2"> Разрешено, если нет пешеходов.</label>
+            <label><input type="radio" name="answer4" value="3"> Запрещено.</label>
+            <label><input type="radio" name="answer4" value="4"> Разрешено только ночью.</label>
+        </div>
+    </div>
+
+    <div data-question-number="5" class="question-item" style="display: none;">
+        <div class="question-text">
+            5. Что нужно сделать, если вы ослеплены светом фар встречного автомобиля?
+        </div>
+        <div class="options-container">
+            <label><input type="radio" name="answer5" value="1"> Включить аварийную сигнализацию и остановиться.</label>
+            <label><input type="radio" name="answer5" value="2"> Продолжить движение, не меняя полосы.</label>
+            <label><input type="radio" name="answer5" value="3"> Включить дальний свет фар.</label>
+            <label><input type="radio" name="answer5" value="4"> Посигналить, чтобы предупредить встречный автомобиль.</label>
+        </div>
+    </div>
+
+    <div data-question-number="6" class="question-item" style="display: none;">
+        <div class="question-text">
+            6. В каком случае разрешено движение по тротуару?
+        </div>
+        <div class="options-container">
+            <label><input type="radio" name="answer6" value="1"> Если нет пешеходов.</label>
+            <label><input type="radio" name="answer6" value="2"> Для объезда препятствия.</label>
+            <label><input type="radio" name="answer6" value="3"> Только для подвоза грузов к торговым точкам.</label>
+            <label><input type="radio" name="answer6" value="4"> Если отсутствуют другие пути для движения.</label>
+        </div>
+    </div>
+
+    <div class="test-controls">
+        <button id="prev-btn">Предыдущий</button>
+        <button id="next-btn">Следующий</button>
+        <button id="submit-btn">Завершить тест</button>
+    </div>
+
+    <div id="result" style="display: none;">
+        Ваш результат: <span id="score">0</span> из 6 (<span id="percentage">0%</span>)
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const questionItems = document.querySelectorAll('.question-item');
+        const prevButton = document.getElementById('prev-btn');
+        const nextButton = document.getElementById('next-btn');
+        const submitButton = document.getElementById('submit-btn');
+        const resultDiv = document.getElementById('result');
+        const scoreSpan = document.getElementById('score');
+        const percentageSpan = document.getElementById('percentage'); // Added
+        let currentQuestion = 1;
+
+        // Function to show a specific question
+        function showQuestion(questionNumber) {
+            questionItems.forEach(item => {
+                item.style.display = item.dataset.questionNumber == questionNumber ? 'block' : 'none';
+            });
+        }
+
+        // Initial display
+        showQuestion(currentQuestion);
+
+        // "Next" button functionality
+        nextButton.addEventListener('click', function () {
+            if (currentQuestion < questionItems.length) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        // "Previous" button functionality
+        prevButton.addEventListener('click', function () {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        // "Submit" button functionality
+        submitButton.addEventListener('click', function () {
+            let score = 0;
+            // Check answers (replace with your logic)
+            const answer1 = document.querySelector('input[name="answer1"]:checked');
+            const answer2 = document.querySelector('input[name="answer2"]:checked');
+            const answer3 = document.querySelector('input[name="answer3"]:checked');
+            const answer4 = document.querySelector('input[name="answer4"]:checked');
+            const answer5 = document.querySelector('input[name="answer5"]:checked');
+            const answer6 = document.querySelector('input[name="answer6"]:checked');
+
+            if (answer1 && answer1.value === "2") score++; // Correct answer for Q1
+            if (answer2 && answer2.value === "2") score++; // Correct answer for Q2
+            if (answer3 && answer3.value === "2") score++; // Correct answer for Q3
+            if (answer4 && answer4.value === "3") score++; // Correct answer for Q4
+            if (answer5 && answer5.value === "1") score++; // Correct answer for Q5
+            if (answer6 && answer6.value === "3") score++; // Correct answer for Q6
+
+            scoreSpan.textContent = score;
+
+            const percentage = (score / questionItems.length) * 100; // Calculate percentage
+            percentageSpan.textContent = percentage.toFixed(0) + "%"; // Display percentage
+
+            resultDiv.style.display = 'block';
+            document.querySelector('.test-controls').style.display = 'none'; // Hide buttons after submit
+        });
+    });
+</script>
+
+</body>
+</html>
